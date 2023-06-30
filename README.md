@@ -1,5 +1,5 @@
 # APOES
-Online proctor system
+Online proctor system.
 It is a system used to monitor a student during an online examination such that they aren't supposed to have unneccessary movements when writing the exam.
 The system also monitors the tabs such that if a student switches a tab, the system will record that in the database.
 
