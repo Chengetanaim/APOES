@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}Structured Questions{% endblock title %}
+
+</head>
+<body>
+    {% block content %}
+{#        <a href="{% url 'exam:proctor' %}" target="_blank" rel="noopener noreferrer">Start</a>#}
+{#        <H1>{{ exam.name }}</H1>#}
+
+        <!-- Top Section -->
+{#            <div class="intro py-3 bg-white text-center">#}
+{#                <div class="container">#}
+{##}
+{#                    <h2><a href="{% url 'exam:proctor' %}" target="_blank" rel="noopener noreferrer" class="text-primary display-3 my-4">Start</a></h2>#}
+{#                </div>#}
+{#            </div>#}
+
+            <!-- Result Section -->
+{#            <div class="result py-4 d-none bg-light text-center">#}
+{#                <div class="container lead">#}
+{#                    <p>You are <span class="text-primary display-4 p-3">0%</span> ninja</p>#}
+{#                </div>#}
+{#            </div>#}
+
+
+            <!-- Quiz Section -->
+            <div class="structured">
+                <section class="py-4 py-xl-5">
+                    <div class="container">
+                        <div class="row mb-5">
+                            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                                <h2>{{ exam.name }}</h2>
+                                <a class="invigilate d-none" href="{% url 'exam:proctor' %}" target="_blank" rel="noopener noreferrer">Click here to start being invigilated</a>
+                                <p id="demo"></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="result py-4 d-none bg-light text-center">
+                <div class="container lead">
+                    <p>Your mark is: <span class="text-primary structured-primary display-4 p-3">0%</span></p>
+
+
+                </div>
+            </div>
+                <div class="bg-light border rounded border-light jumbotron py-5 px-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Exam Questions</h4>
+                            <h6 class="text-muted card-subtitle mb-2">Pease note marks will be given for long answers.</h6>
+                            <form class="structured-form d-none long-answer-form">
+                                {% for question in exam_questions %}
+                                <p>{{ question.question }}</p><textarea name="q{{ question.id }}" class="form-control long-answer-textarea"></textarea>
+{#                                {% empty %}#}
+{#                                <li>Exam not yet set.</li>#}
+                                {% endfor %}
+{#                                <p>Selectionner le nom pour l'upload</p><textarea class="form-control"></textarea>#}
+                                <div class="mt-4"><button class="btn btn-success btn-lg score long-answer-btn" type="submit">Submit</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{#        {% for answer in answers %}#}
+{##}
+{#                <p class="answers">{{ answer.answer }}</p>#}
+{##}
+{#        {% endfor %}#}
+        <p class="examDate d-none">{{ exam.endtime }}</p>
+        <p class="examDateStart d-none">{{ exam.start_time }}</p>
+{#        <section class="py-4 py-xl-5">#}
+{#            <div class="container">#}
+{#                <div class="text-center p-4 p-lg-5">#}
+{#                    <p class="fw-bold text-primary mb-2">Proud to introduce</p>#}
+{#                    <h1 class="fw-bold mb-4">Online Proctor system, we are with you everywhere!</h1><button class="btn btn-primary fs-5 me-2 py-2 px-4" type="button">Learn more.</button><button class="btn btn-light fs-5 py-2 px-4" type="button">Discover</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+
+
+
+    {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}Home{% endblock title %}
+</head>
+<body>
+    {% block content %}
+
+         <div>
+        <section class="py-4 py-xl-5">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-8 col-xl-6 text-center mx-auto">
+                        <h2>Available Examinations</h2>
+                        <p>The following are the available examinations as from the current date.</p>
+                    </div>
+                </div>
+            </div>
+            <section class="mt-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="card-header py-2">
+                                    <p class="lead text-info m-0"><strong>No cheating should be allowed when writing these exams.</strong></p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive table mb-0 pt-3 pe-2">
+                                        <table class="table table-striped table-sm my-0 mydatatable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Module</th>
+                                                    <th>Exam Type</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            {% for exam in multiple_choice_exam %}
+                                            <tbody>
+                                                <tr>
+
+                                                    <td><a href="{% url 'exam:multiple_choice' exam.id %}">{{ exam.name }}</a></td>
+                                                    <td>{{ exam.exam_type }}</td>
+                                                    <td>{{ exam.start_time }}</td>
+                                                </tr>
+{#                                            {% empty %}#}
+{#                                                 <tr>#}
+{#                                                    <td>None</td>#}
+{#                                                    <td>0</td>#}
+{#                                                    <td>0</td>#}
+{#                                                </tr>#}
+
+                                            </tbody>
+                                            {% endfor %}
+{#                                         {% for exam in structured_exam %}#}
+{#                                            <tbody>#}
+{#                                                <tr>#}
+{##}
+{#                                                    <td><a href="{% url 'exam:structured' exam.id %}">{{ exam.name }}</a></td>#}
+{#                                                    <td>{{ exam.exam_type }}</td>#}
+{#                                                    <td>{{ exam.start_time }}</td>#}
+{#                                                </tr>#}
+{#                                            {% empty %}#}
+{#                                                 <tr>#}
+{#                                                    <td>None</td>#}
+{#                                                    <td>0</td>#}
+{#                                                    <td>0</td>#}
+{#                                                </tr>#}
+{##}
+{#                                            </tbody>#}
+{#                                            {% endfor %}#}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+{#         <section class="py-4 py-xl-5">#}
+{#            <div class="container">#}
+{#                <div class="text-center p-4 p-lg-5">#}
+{#                    <p class="fw-bold text-primary mb-2">Proud to introduce</p>#}
+{#                    <h1 class="fw-bold mb-4">Online Proctor system, we are with you everywhere!</h1><button class="btn btn-primary fs-5 me-2 py-2 px-4" type="button">Learn more.</button><button class="btn btn-light fs-5 py-2 px-4" type="button">Discover</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+    </div>
+    {% endblock content %}
+</body>
+</html>

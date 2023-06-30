@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}Multiple Choice Questions{% endblock title %}
+
+</head>
+<body>
+    {% block content %}
+{#        <a href="{% url 'exam:proctor' %}" target="_blank" rel="noopener noreferrer">Start</a>#}
+{#        <H1>{{ exam.name }}</H1>#}
+
+        <!-- Top Section -->
+{#            <div class="intro py-3 bg-white text-center">#}
+{#                <div class="container">#}
+{##}
+{#                    <h2><a href="{% url 'exam:proctor' %}" target="_blank" rel="noopener noreferrer" class="text-primary display-3 my-4">Start</a></h2>#}
+{#                </div>#}
+{#            </div>#}
+        <section class="py-4 py-xl-5">
+                    <div class="container">
+                        <div class="row mb-5">
+                            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                                <h2>{{ exam.name }}</h2>
+                                <a class="invigilate d-none" href="{% url 'exam:proctor' %}" target="_blank" rel="noopener noreferrer">Click here to start being invigilated</a>
+                                <p id="demo"></p>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+
+            <!-- Result Section -->
+            <div class="result py-4 d-none bg-light text-center">
+                <div class="container lead">
+                    <p>Your score is: <span class="text-primary display-4 p-3">0%</span></p>
+
+
+                </div>
+            </div>
+            {% for answer in answers %}
+                <p class="answers d-none">{{ answer.answer }}</p>
+
+            {% endfor %}
+
+            <!-- Quiz Section -->
+        <div class="bg-light border rounded border-light jumbotron py-5 px-4">
+
+            <div class="quiz py-4 bg-light">
+{#            <div class="quiz py-4 bg-primary">#}
+                <div class="container">
+                    <h2 class="my-5 text-dark">
+                        On with the questions...
+                    </h2>
+
+                    <form class="quiz-form d-none text-dark structured-form">
+                        {% for exam_question in exam_questions %}
+                            <div class="my-5">
+                                <p class="lead font-wight-normal">{{ exam_question.question }}</p>
+                                <div class="form-check my-2 text-dark-50">
+                                    <input type="radio" name="q{{ exam_question.id }}" value="A" checked>
+                                    <label class="form-check-label">{{ exam_question.answer1 }}</label>
+                                </div>
+                                <div class="form-check my-2 text-dark-50">
+                                    <input type="radio" name="q{{ exam_question.id }}" value="B">
+                                    <label class="form-check-label">{{ exam_question.answer2 }}</label>
+                                </div>
+                                <div class="form-check my-2 text-dark-50">
+                                    <input type="radio" name="q{{ exam_question.id }}" value="C">
+                                    <label class="form-check-label">{{ exam_question.answer3 }}</label>
+                                </div>
+                                <div class="form-check my-2 text-dark-50">
+                                    <input type="radio" name="q{{ exam_question.id }}" value="D">
+                                    <label class="form-check-label">{{ exam_question.answer4 }}</label>
+                                </div>
+                            </div>
+
+
+                        {% endfor %}
+                            <div class="text-center">
+                                <input class="score" type="submit" class="btn btn-light">
+                            </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+            </div>
+
+        <p class="examDate d-none">{{ exam.endtime }}</p>
+        <p class="examDateStart d-none">{{ exam.start_time }}</p>
+{#        <section class="py-4 py-xl-5">#}
+{#            <div class="container">#}
+{#                <div class="text-center p-4 p-lg-5">#}
+{#                    <p class="fw-bold text-primary mb-2">Proud to introduce</p>#}
+{#                    <h1 class="fw-bold mb-4">Online Proctor system, we are with you everywhere!</h1><button class="btn btn-primary fs-5 me-2 py-2 px-4" type="button">Learn more.</button><button class="btn btn-light fs-5 py-2 px-4" type="button">Discover</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+
+{#       <div class="carousel slide" data-bs-ride="false" id="carousel-1">#}
+{#            <div class="carousel-inner">#}
+{#                <div class="carousel-item active"><img class="w-100 d-block" src="{% static '/assets/img/quiz-examples-768x388.png' %}" alt="Slide Image" height="500" width="100"></div>#}
+{#                <div class="carousel-item"><img class="w-100 d-block" src="{% static '/assets/img/linear-regression-in-machine-learning.png' %}" alt="Slide Image" height="500" width="100"></div>#}
+{#            </div>#}
+{#            <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>#}
+{#            <ol class="carousel-indicators">#}
+{#                <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>#}
+{#                <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>#}
+{#            </ol>#}
+{#        </div>#}
+
+
+
+    {% endblock content %}
+</body>
+</html>
